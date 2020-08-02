@@ -1127,12 +1127,12 @@
 #define X_BED_SIZE 235
 #define Y_BED_SIZE 235
 
-// Travel limits (mm) after homing, corresponding to endstop positions. 
-#define X_MIN_POS -0.5            //regain some printable area, endstop to far out X0 = 5mm into bed can go 0.5mm more into the endstop after home though
-#define Y_MIN_POS 0             //>>Y-Endstop+Clip at front
+// Travel limits (mm) after homing, corresponding to endstop positions. (This means after finding home endstops position will be set (G92?) to the min values/co-ords)
+#define X_MIN_POS -0.5                                                                                //regain some printable area, endstop to far out X0 = 5mm into bed can go 0.5mm more into the endstop after home though
+#define Y_MIN_POS -3                                                                                      //>>Y-Endstop+Clip at front
 #define Z_MIN_POS 0
-#define X_MAX_POS (X_BED_SIZE-5) //printable area due to endstop being ?5mm to close
-#define Y_MAX_POS (Y_BED_SIZE-35) //?printabe area.. bed size -(15+25) for the clips and -3 to compensate for Endstop infront of bed
+#define X_MAX_POS (X_BED_SIZE-X_MIN_POS)                                                                         //printable area due to endstop being ?5mm to close
+#define Y_MAX_POS (Y_BED_SIZE-Y_MIN_POS)                                                                            //?printabe area.. bed size -(15+25) for the clips and -3 to compensate for Endstop infront of bed
 #define Z_MAX_POS 250
 
 /**
@@ -1314,9 +1314,9 @@
 
   #define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
-  #define MESH_INSET 1              // Set Mesh bounds as (mm??) an inset region of the bed
+  #define MESH_INSET        5       // Set Mesh bounds as (mm??) an inset region of the bed
   #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
-  #define GRID_MAX_POINTS_Y 11
+  #define GRID_MAX_POINTS_Y 9
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
   #define UBL_SAVE_ACTIVE_ON_M500   // Save the currently active mesh in the current slot on M500
