@@ -982,7 +982,7 @@
  *     |    [+]    |
  *   L |        1  | R <-- Example "1" (right+,  back+)
  *   E |  2        | I <-- Example "2" ( left-,  back+)
- *   F |[-]  N  [+]| G <-- Nozzle
+ *   F |[-]  N  [+]| G <-- Nozzle                      //(Is at centre point, ={ X0, Y0, Z0 }??)
  *   T |       3   | H <-- Example "3" (right+, front-)
  *     | 4         | T <-- Example "4" ( left-, front-)
  *     |    [-]    |
@@ -995,7 +995,7 @@
 #define PROBING_MARGIN 0
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 8000
+#define XY_PROBE_SPEED (100*60)
 
 // Feedrate (mm/m) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1128,11 +1128,11 @@
 #define Y_BED_SIZE 235
 
 // Travel limits (mm) after homing, corresponding to endstop positions. 
-#define X_MIN_POS -0.5
-#define Y_MIN_POS -18
+#define X_MIN_POS -0.5            //regain some printable area, endstop to far out X0 = 5mm into bed can go 0.5mm more into the endstop after home though
+#define Y_MIN_POS 0             //>>Y-Endstop+Clip at front
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+#define X_MAX_POS (X_BED_SIZE-5) //printable area due to endstop being ?5mm to close
+#define Y_MAX_POS (Y_BED_SIZE-35) //?printabe area.. bed size -(15+25) for the clips and -3 to compensate for Endstop infront of bed
 #define Z_MAX_POS 250
 
 /**
@@ -1148,8 +1148,8 @@
 #define MIN_SOFTWARE_ENDSTOPS
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
-  #define MIN_SOFTWARE_ENDSTOP_Y                //(This makes it seem like im supposed to define these but as per '/m211.html xyz_min/max define these??)
-  #define MIN_SOFTWARE_ENDSTOP_Z
+  #define MIN_SOFTWARE_ENDSTOP_Y                
+  #define MIN_SOFTWARE_ENDSTOP_Z                //(Could i define these if i wanted..? guessing, no)
 #endif
 
 // Max software endstops constrain movement within maximum coordinate bounds
@@ -1274,7 +1274,7 @@
     #define MESH_TEST_HOTEND_TEMP  210    // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
     #define MESH_TEST_BED_TEMP      50    // (°C) Default bed temperature for the G26 Mesh Validation Tool.
     #define G26_XY_FEEDRATE         15    // (mm/s) Feedrate for XY Moves for the G26 Mesh Validation Tool.
-    #define G26_RETRACT_MULTIPLIER   1.2  // G26 Q (retraction) used by default between mesh test elements.
+    #define G26_RETRACT_MULTIPLIER   1.2  // G26 Q (retraction) used by default between mesh test elements. //(??Based on what, FW retraction?)
   #endif
 
 #endif
