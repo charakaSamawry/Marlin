@@ -1128,7 +1128,7 @@
 #define Y_BED_SIZE 235
 
 // Travel limits (mm) after homing, corresponding to endstop positions. (This means after finding home endstops position will be set (G92?) to the min values/co-ords)
-#define X_MIN_POS -0.5                                                                                //regain some printable area, endstop to far out X0 = 5mm into bed can go 0.5mm more into the endstop after home though
+#define X_MIN_POS 0                                                                                //regain some printable area, endstop to far out X0 = 5mm into bed can go 0.5mm more into the endstop after home though
 #define Y_MIN_POS -3                                                                                      //>>Y-Endstop+Clip at front
 #define Z_MIN_POS 0
 #define X_MAX_POS (X_BED_SIZE)                                                                         //printable area due to endstop being ?5mm to close
@@ -1942,7 +1942,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD
@@ -2028,7 +2028,7 @@
 // This is RAMPS-compatible using a single 10-pin connector.
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
-#define CR10_STOCKDISPLAY
+//#define CR10_STOCKDISPLAY
 
 //
 // Ender-2 OEM display, a variant of the MKS_MINI_12864

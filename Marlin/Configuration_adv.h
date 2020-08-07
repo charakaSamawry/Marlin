@@ -1659,9 +1659,9 @@
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
   // Override the mesh area if the automatic (max) area is too large
   //#define MESH_MIN_X MESH_INSET
-  #define MESH_MIN_Y (15)                            
+  #define MESH_MIN_Y 15                            
   //#define MESH_MAX_X X_BED_SIZE - (MESH_INSET)     //(Hard to see where feature ends and value starts)
-  #define MESH_MAX_Y (Y_BED_SIZE-25)                 //Brackets turn lone numerical values blue          
+  #define MESH_MAX_Y (Y_BED_SIZE-25)                 //(??Brackets turn lone numerical values blue. Am i correctly using brackets around things ike this?)         
 #endif
 
 /**
