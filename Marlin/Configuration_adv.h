@@ -795,9 +795,9 @@
 #endif
 
 //
-// Add the G35 command to read bed corners to help adjust screws. Requires a bed probe.
+// Add the G35 command to read bed corners to help adjust screws. Requires a bed probe. //(what constitues a bed probe? bed probe is not a reference used anywhere else?)
 //
-//#define ASSISTED_TRAMMING
+//#define ASSISTED_TRAMMING //(AUTO Probe type required??? not with nozzle as probe? dont know why i wouldnt want to manually probe the tramming screws?????? not everyone has bltouch)
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probing points, use the hotend as reference not the sensor.
