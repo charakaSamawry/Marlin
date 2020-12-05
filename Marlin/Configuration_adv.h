@@ -799,9 +799,9 @@
 #endif
 
 //
-// Add the G35 command to read bed corners to help adjust screws. Requires a bed probe. //(what constitues a bed probe? bed probe is not a reference used anywhere else?)
+// Add the G35 command to read bed corners to help adjust screws. Requires a bed probe. //(what constitues a bed probe? (FOUND, in conditionals.h) bed probe is not a reference used anywhere else?)
 //
-//#define ASSISTED_TRAMMING //(AUTO Probe type required??? not with nozzle as probe? dont know why i wouldnt want to manually probe the tramming screws?????? not everyone has bltouch)
+//#define ASSISTED_TRAMMING //(AUTO Probe type required??? IF BEd_probe? instead of sanity check? not with nozzle as probe? dont know why i wouldnt want to manually probe the tramming screws?????? not everyone has bltouch)
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probing points, use the hotend as reference not the sensor.
@@ -868,7 +868,7 @@
 // Increase the slowdown divisor for larger buffer sizes.
 #define SLOWDOWN
 #if ENABLED(SLOWDOWN)
-  #define SLOWDOWN_DIVISOR 4
+  #define SLOWDOWN_DIVISOR 2
 #endif
 
 /**
@@ -877,7 +877,7 @@
  * See https://hydraraptor.blogspot.com/2010/12/frequency-limit.html
  * Use M201 F<freq> G<min%> to change limits at runtime.
  */
-#define XY_FREQUENCY_LIMIT      10 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
+#define XY_FREQUENCY_LIMIT        10 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
 #ifdef XY_FREQUENCY_LIMIT
   #define XY_FREQUENCY_MIN_PERCENT 5 // (percent) Minimum Feed Rate (FR) percentage to apply. Set with M201 G<min%>.
 #endif
@@ -1069,7 +1069,7 @@
 #define ENCODER_RATE_MULTIPLIER
 #if ENABLED(ENCODER_RATE_MULTIPLIER)
   #define ENCODER_10X_STEPS_PER_SEC   30  // (steps/s) Encoder rate for 10x speed
-  #define ENCODER_100X_STEPS_PER_SEC  80  // (steps/s) Encoder rate for 100x speed
+  #define ENCODER_100X_STEPS_PER_SEC  100  // (steps/s) Encoder rate for 100x speed
 #endif
 
 // Play a beep when the feedrate is changed from the Status Screen
@@ -1202,6 +1202,8 @@
 
   //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
 
+    //#define BROWSE_MEDIA_ON_INSERT          // Open the file browser when media is inserted
+
   #define EVENT_GCODE_SD_ABORT "G27 P2"       // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
 
   #if ENABLED(PRINTER_EVENT_LEDS)
@@ -1209,7 +1211,7 @@
   #endif
 
   /**
-   * Continue after Power-Loss (Creality3D)
+   * Continue after Power-Loss (Creality3D//?)
    *
    * Store the current state to the SD Card at the start of each layer
    * during SD printing. If the recovery file is found at boot time, present
